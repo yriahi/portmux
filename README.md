@@ -2,6 +2,36 @@
 
 A lightweight Docker image that acts as a universal HTTP stub for testing containerized service scaffolding. It listens simultaneously on ports 80, 8080, 8181, 8081, 3000, and 5000, and returns HTTP 200 with JSON request metadata on every path regardless of method or URL. Drop it in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run to validate networking, routing, proxies, load balancers, and health probes — without needing real application code.
 
+## Building & Pushing
+
+The image must be built and pushed to the registry before it can be pulled. Two paths are supported:
+
+### Automated (CI/CD)
+
+Pushing to `main` or tagging `v*.*.*` triggers the GitHub Actions workflow (`.github/workflows/build-push.yml`), which builds a multi-arch image (`linux/amd64`, `linux/arm64`) and pushes it to Nexus automatically.
+
+**Required repo secrets:**
+
+| Secret | Description |
+|--------|-------------|
+| `NEXUS_USERNAME` | Nexus registry username |
+| `NEXUS_PASSWORD` | Nexus registry password |
+
+### Manual (first-time or local)
+
+For first-time setup before CI runs, or for local testing:
+
+```bash
+docker login nexus.cainc.com:5000
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --push \
+  -t nexus.cainc.com:5000/cainc/yriahi/swiss-army-image:latest \
+  .
+```
+
+> **Note:** Requires `docker buildx` with a multi-platform builder. If you haven't set one up, run `docker buildx create --use` first.
+
 ## Quick Start
 
 ### docker run
