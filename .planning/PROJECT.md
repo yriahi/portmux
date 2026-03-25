@@ -19,6 +19,8 @@ Any containerized scaffolding can be validated end-to-end — networking, routin
 
 ### Active
 
+- [x] Delay injection via `?delay=<ms>` query param (clamped to 30s, invalid ignored) — Validated in Phase 3: Behavioral Enhancements
+- [x] Status code override via `?status=<code>` query param (100-999 range, invalid ignored) — Validated in Phase 3: Behavioral Enhancements
 - [ ] Works in docker run, docker-compose, Kubernetes, and AWS ECS contexts
 - [ ] Dockerfile published and runnable with a single `docker run` command
 
@@ -31,7 +33,7 @@ Any containerized scaffolding can be validated end-to-end — networking, routin
 
 ## Current State
 
-Phase 1 complete — Go binary delivers all server requirements (SRVR-01 through LOG-02). Binary compiles with CGO_ENABLED=0 using stdlib-only, ready for Phase 2 multi-stage Dockerfile with FROM scratch.
+Phase 3 complete — delay injection (?delay=<ms>) and status code override (?status=<code>) added to handler. 40/40 integration tests passing. ENH-01 and ENH-02 validated. This is the last planned phase in v1.0 milestone.
 
 ## Context
 
@@ -73,4 +75,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-25 after Phase 1: Core Server Binary*
+*Last updated: 2026-03-25 after Phase 3: Behavioral Enhancements*
