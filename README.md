@@ -1,6 +1,6 @@
 # Swiss Army Image
 
-A lightweight Docker image that acts as a universal HTTP stub for testing containerized service scaffolding. It listens simultaneously on ports 80, 8080, 8181, 8081, 3000, and 5000, and returns HTTP 200 with JSON request metadata on every path regardless of method or URL. Drop it in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run to validate networking, routing, proxies, load balancers, and health probes — without needing real application code.
+A lightweight Docker image that acts as a universal HTTP stub for testing containerized service scaffolding. It listens simultaneously on ports 80, 3000, 3306, 5000, 5432, 6379, 8000, 8080, 8081, 8181, 8888, and 9090, and returns HTTP 200 with JSON request metadata on every path regardless of method or URL. Drop it in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run to validate networking, routing, proxies, load balancers, and health probes — without needing real application code.
 
 ## Building & Pushing
 
@@ -44,6 +44,12 @@ docker run \
   -p 8081:8081 \
   -p 3000:3000 \
   -p 5000:5000 \
+  -p 3306:3306 \
+  -p 5432:5432 \
+  -p 6379:6379 \
+  -p 8000:8000 \
+  -p 8888:8888 \
+  -p 9090:9090 \
   nexus.cainc.com:5000/cainc/yriahi/swiss-army-image:latest
 ```
 
@@ -62,6 +68,12 @@ services:
       - "8081:8081"
       - "3000:3000"
       - "5000:5000"
+      - "3306:3306"
+      - "5432:5432"
+      - "6379:6379"
+      - "8000:8000"
+      - "8888:8888"
+      - "9090:9090"
 ```
 
 Then start it:
@@ -99,13 +111,19 @@ Every request — any path, any HTTP method — returns HTTP 200 with a JSON bod
 | Port | Common Framework |
 |------|----------------|
 | 80 | nginx, Apache, generic HTTP |
-| 8080 | Spring Boot, Tomcat, generic app server |
-| 8181 | Karaf, some microservice frameworks |
-| 8081 | Alternative app server port |
 | 3000 | Node.js (Express, Next.js, React dev) |
+| 3306 | MySQL, MariaDB |
 | 5000 | Flask, Python dev servers |
+| 5432 | PostgreSQL |
+| 6379 | Redis |
+| 8000 | Django, uvicorn, generic HTTP alt |
+| 8080 | Spring Boot, Tomcat, generic app server |
+| 8081 | Alternative app server port |
+| 8181 | Karaf, some microservice frameworks |
+| 8888 | Jupyter Notebook, secondary proxy |
+| 9090 | Prometheus, management dashboards |
 
-> **Note:** Port 80 requires root or `CAP_NET_BIND_SERVICE`. If it fails to bind, the other 5 ports still work.
+> **Note:** Port 80 requires root or `CAP_NET_BIND_SERVICE`. If it fails to bind, the other 11 ports still work.
 
 ## Image Details
 
