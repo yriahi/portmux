@@ -55,7 +55,9 @@ Plans:
   1. A request with `?delay=500` causes the response to arrive after at least 500 milliseconds
   2. A request with `?status=503` returns HTTP 503 instead of 200 (with the same JSON body)
   3. Requests without delay or status query params are unaffected and continue returning HTTP 200 immediately
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 03-01-PLAN.md — Add delay injection and status code override to handler with integration tests
 
 ## Progress
 
@@ -66,4 +68,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Core Server Binary | 0/1 | Planning complete | - |
 | 2. Container and Distribution | 2/2 | Complete   | 2026-03-25 |
-| 3. Behavioral Enhancements | 0/? | Not started | - |
+| 3. Behavioral Enhancements | 0/1 | Planning complete | - |
