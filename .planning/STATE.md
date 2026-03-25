@@ -1,10 +1,10 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: milestone
-status: Milestone complete
-stopped_at: Completed quick task 260325-rbw: Add ports 8000 8888 3306 5432 6379 9090
-last_updated: "2026-03-25T23:45:09Z"
+milestone_name: MVP
+status: Milestone complete — v1.0 shipped and archived
+stopped_at: "v1.0 milestone archived — ready for /gsd:new-milestone"
+last_updated: "2026-03-25T23:54:08.209Z"
 progress:
   total_phases: 3
   completed_phases: 3
@@ -16,37 +16,20 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-03-25)
+See: .planning/PROJECT.md (updated 2026-03-25 after v1.0 milestone)
 
 **Core value:** Any containerized scaffolding can be validated end-to-end — networking, routing, proxies, load balancers, probes — without needing real application code running.
-**Current focus:** Phase 03 — behavioral-enhancements
+**Current focus:** v1.0 shipped — planning next milestone
 
 ## Current Position
 
-Phase: 03
-Plan: Not started
+Milestone v1.0 complete. No active phase. Run `/gsd:new-milestone` to start v1.1.
 
 ## Performance Metrics
 
-**Velocity:**
-
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
-
-**By Phase:**
-
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| - | - | - | - |
-
-**Recent Trend:**
-
-- Last 5 plans: —
-- Trend: —
-
-*Updated after each plan completion*
-| Phase 01-core-server-binary P01 | 8 | 2 tasks | 4 files |
+| Phase | Duration | Tasks | Files |
+|-------|----------|-------|-------|
+| Phase 01-core-server-binary P01 | 8min | 2 tasks | 4 files |
 | Phase 02-container-and-distribution P01 | 1min | 2 tasks | 2 files |
 | Phase 02-container-and-distribution P02 | 3min | 2 tasks | 2 files |
 | Phase 03-behavioral-enhancements P01 | 8min | 2 tasks | 2 files |
@@ -55,30 +38,16 @@ Plan: Not started
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- Pre-roadmap: Go 1.26.1 + FROM scratch chosen — smallest image, goroutine-per-port via errgroup
-- Pre-roadmap: Port 80 root vs. CAP_NET_BIND_SERVICE — open decision to resolve in Phase 2
-- Pre-roadmap: Registry target (GHCR vs. Docker Hub) — open decision to resolve before Phase 3
-- [Phase 01-core-server-binary]: net.Listen pre-flight used for accurate startup banner — activePorts only lists successfully-bound ports
-- [Phase 01-core-server-binary]: go 1.21 minimum in go.mod for log/slog availability; port 80 bind failure is non-fatal per D-04
-- [Phase 01-core-server-binary]: makeHandler closure-based factory avoids runtime port parsing from r.Host per research guidance
-- [Phase 02-container-and-distribution]: FROM --platform=$BUILDPLATFORM on builder stage avoids QEMU emulation during go build (native-speed cross-compilation)
-- [Phase 02-container-and-distribution]: Exec-form ENTRYPOINT ["/swiss-army-image"] mandatory for FROM scratch — shell-form fails because /bin/sh is absent
-- [Phase 02-container-and-distribution]: Single GHA job (build-push) over separate build/push jobs — avoids artifact passing, simpler for this project scale
-- [Phase 02-container-and-distribution]: docker-compose.yml omits deprecated 'version:' key — 'services:' at top level is correct for modern Docker Compose v2+
-- [Phase 02-container-and-distribution]: README scope matches D-08 exactly: no build-from-source instructions, no contributing guide — just what a user needs to run the image
-- [Phase 03-behavioral-enhancements]: Use curl -s (not -sf) for non-2xx status tests — -f causes curl exit non-zero concatenating 000 fallback with status code
-- [Phase 03-behavioral-enhancements]: Inline parse-and-validate for delay/status params — ~10 lines each, no abstraction needed; resolvedStatus pattern for parameterized WriteHeader
+All v1.0 decisions logged in PROJECT.md Key Decisions table.
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-None yet.
+- Nexus registry credentials (NEXUS_USERNAME, NEXUS_PASSWORD) not yet added as GitHub Actions secrets
+- Nexus reachability from GHA runners not yet confirmed
 
 ### Quick Tasks Completed
 
@@ -89,6 +58,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T23:45:09Z
-Stopped at: Completed quick task 260325-rbw: Add ports 8000 8888 3306 5432 6379 9090
+Last session: 2026-03-25
+Stopped at: v1.0 milestone archived — ready for /gsd:new-milestone
 Resume file: None
