@@ -113,3 +113,11 @@ None beyond the curl flag bug documented above.
 ---
 *Phase: 03-behavioral-enhancements*
 *Completed: 2026-03-25*
+
+## Self-Check: PASSED
+
+- FOUND: handler.go
+- FOUND: test.sh
+- FOUND: 03-01-SUMMARY.md
+- FOUND: commit c6942c5 (feat: handler.go delay + status)
+- FOUND: commit 2dd39dc (feat: test.sh integration tests)
