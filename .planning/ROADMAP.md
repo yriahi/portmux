@@ -28,7 +28,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every request produces a structured JSON log line on stdout with port, method, path, and timestamp
   4. Sending SIGTERM causes the process to exit cleanly within 5 seconds (in-flight requests drain, no hanging)
   5. Response includes `Content-Type: application/json` header on every request
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 01-01-PLAN.md — Implement Go server binary with multi-port binding, JSON responses, structured logging, SIGTERM shutdown, and integration tests
 
 ### Phase 2: Container and Distribution
 **Goal**: A published multi-arch Docker image runnable with a single `docker run` command, built and pushed automatically by GitHub Actions on semver tags, with a docker-compose example and README usage instructions
@@ -59,6 +61,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Core Server Binary | 0/? | Not started | - |
+| 1. Core Server Binary | 0/1 | Planning complete | - |
 | 2. Container and Distribution | 0/? | Not started | - |
 | 3. Behavioral Enhancements | 0/? | Not started | - |
