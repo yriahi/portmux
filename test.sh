@@ -127,6 +127,75 @@ assert_contains "Request log contains msg:request"   "$LOG_CONTENT" '"msg":"requ
 assert_contains "Request log contains port"          "$LOG_CONTENT" '"port"'
 assert_contains "Request log contains method"        "$LOG_CONTENT" '"method"'
 
+# ----- test g: status code override (?status=) --------------------------------
+
+# Valid status override
+HTTP_503=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:8080/?status=503" 2>/dev/null || echo "000")
+assert_eq "?status=503 returns HTTP 503" "503" "$HTTP_503"
+
+HTTP_404=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:8080/?status=404" 2>/dev/null || echo "000")
+assert_eq "?status=404 returns HTTP 404" "404" "$HTTP_404"
+
+# Response body still has correct JSON shape with status override
+RESP_503=$(curl -s -o - -w "" "http://localhost:8080/test?status=503&foo=bar" 2>/dev/null)
+assert_contains "status=503 response has port"         "$RESP_503" '"port":8080'
+assert_contains "status=503 response has method"       "$RESP_503" '"method":"GET"'
+assert_contains "status=503 response has path"         "$RESP_503" '"path":"/test"'
+assert_contains "status=503 response has query_params" "$RESP_503" '"query_params"'
+assert_contains "status=503 response has status param" "$RESP_503" '"status":"503"'
+assert_contains "status=503 response has foo param"    "$RESP_503" '"foo":"bar"'
+
+# Invalid status values silently ignored -> HTTP 200
+HTTP_INVALID_STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "http://localhost:8080/?status=abc" 2>/dev/null || echo "000")
+assert_eq "?status=abc returns HTTP 200 (invalid ignored)" "200" "$HTTP_INVALID_STATUS"
+
+HTTP_OOR_STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "http://localhost:8080/?status=50" 2>/dev/null || echo "000")
+assert_eq "?status=50 returns HTTP 200 (out-of-range ignored)" "200" "$HTTP_OOR_STATUS"
+
+# ----- test h: delay injection (?delay=) --------------------------------------
+
+# Measurable delay (200ms — long enough to measure, short enough for CI)
+START_MS=$(python3 -c "import time; print(int(time.time()*1000))")
+curl -sf -o /dev/null "http://localhost:8080/?delay=200" 2>/dev/null
+END_MS=$(python3 -c "import time; print(int(time.time()*1000))")
+ELAPSED_MS=$(( END_MS - START_MS ))
+
+if [[ "$ELAPSED_MS" -ge 150 ]]; then
+  pass "?delay=200 took ${ELAPSED_MS}ms (>= 150ms)"
+else
+  fail "?delay=200 took only ${ELAPSED_MS}ms (expected >= 150ms)"
+fi
+
+# No delay without param — should respond in < 100ms
+START_MS2=$(python3 -c "import time; print(int(time.time()*1000))")
+curl -sf -o /dev/null "http://localhost:8080/" 2>/dev/null
+END_MS2=$(python3 -c "import time; print(int(time.time()*1000))")
+ELAPSED_MS2=$(( END_MS2 - START_MS2 ))
+
+if [[ "$ELAPSED_MS2" -lt 100 ]]; then
+  pass "No delay param responds in ${ELAPSED_MS2}ms (< 100ms)"
+else
+  fail "No delay param took ${ELAPSED_MS2}ms (expected < 100ms)"
+fi
+
+# Invalid delay values silently ignored
+HTTP_BAD_DELAY=$(curl -sf -o /dev/null -w "%{http_code}" "http://localhost:8080/?delay=abc" 2>/dev/null || echo "000")
+assert_eq "?delay=abc returns HTTP 200 (invalid ignored)" "200" "$HTTP_BAD_DELAY"
+
+HTTP_NEG_DELAY=$(curl -sf -o /dev/null -w "%{http_code}" "http://localhost:8080/?delay=-100" 2>/dev/null || echo "000")
+assert_eq "?delay=-100 returns HTTP 200 (negative ignored)" "200" "$HTTP_NEG_DELAY"
+
+# ----- test i: combined delay + status ----------------------------------------
+
+HTTP_COMBINED=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:8080/?delay=100&status=418" 2>/dev/null || echo "000")
+assert_eq "?delay=100&status=418 returns HTTP 418" "418" "$HTTP_COMBINED"
+
+# ----- test j: status field in request logs (D-07) ----------------------------
+
+sleep 1
+LOG_CONTENT2=$(cat /tmp/sai-test-stdout.log)
+assert_contains "Log contains status field" "$LOG_CONTENT2" '"status"'
+
 # ----- test f: graceful SIGTERM shutdown ------------------------------------
 
 echo ""
