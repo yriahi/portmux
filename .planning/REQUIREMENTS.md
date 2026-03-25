@@ -24,14 +24,14 @@
 
 ### Container
 
-- [ ] **CONT-01**: Dockerfile uses multi-stage build — Go binary compiled with CGO_ENABLED=0, final stage is FROM scratch (~5-8 MB image)
-- [ ] **CONT-02**: Image is built and published for both linux/amd64 and linux/arm64 architectures
+- [x] **CONT-01**: Dockerfile uses multi-stage build — Go binary compiled with CGO_ENABLED=0, final stage is FROM scratch (~5-8 MB image)
+- [x] **CONT-02**: Image is built and published for both linux/amd64 and linux/arm64 architectures
 - [ ] **CONT-03**: README includes a `docker run` command that maps all 6 ports in a single invocation
 
 ### Distribution
 
-- [ ] **DIST-01**: GitHub Actions workflow builds and pushes the image to a registry on push to main and on semver tags
-- [ ] **DIST-02**: Published image is tagged with semver (e.g., v1.0.0) and a mutable `latest` alias
+- [x] **DIST-01**: GitHub Actions workflow builds and pushes the image to a registry on push to main and on semver tags
+- [x] **DIST-02**: Published image is tagged with semver (e.g., v1.0.0) and a mutable `latest` alias
 - [ ] **DIST-03**: Repository includes a `docker-compose.yml` example showing the image wired into a typical service stack
 
 ### Enhancements
@@ -73,11 +73,11 @@
 | RESP-03 | Phase 1 | Complete |
 | LOG-01 | Phase 1 | Complete |
 | LOG-02 | Phase 1 | Complete |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
 | CONT-03 | Phase 2 | Pending |
-| DIST-01 | Phase 2 | Pending |
-| DIST-02 | Phase 2 | Pending |
+| DIST-01 | Phase 2 | Complete |
+| DIST-02 | Phase 2 | Complete |
 | DIST-03 | Phase 2 | Pending |
 | ENH-01 | Phase 3 | Pending |
 | ENH-02 | Phase 3 | Pending |

@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-25T21:13:02.130Z"
+status: Ready to execute
+stopped_at: Completed 02-container-and-distribution/02-01-PLAN.md
+last_updated: "2026-03-25T21:31:17.854Z"
 progress:
   total_phases: 3
   completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  total_plans: 3
+  completed_plans: 2
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Any containerized scaffolding can be validated end-to-end — networking, routing, proxies, load balancers, probes — without needing real application code running.
-**Current focus:** Phase 01 — core-server-binary
+**Current focus:** Phase 02 — container-and-distribution
 
 ## Current Position
 
-Phase: 2
-Plan: Not started
+Phase: 02 (container-and-distribution) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -47,6 +47,7 @@ Plan: Not started
 
 *Updated after each plan completion*
 | Phase 01-core-server-binary P01 | 8 | 2 tasks | 4 files |
+| Phase 02-container-and-distribution P01 | 1min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -61,6 +62,9 @@ Recent decisions affecting current work:
 - [Phase 01-core-server-binary]: net.Listen pre-flight used for accurate startup banner — activePorts only lists successfully-bound ports
 - [Phase 01-core-server-binary]: go 1.21 minimum in go.mod for log/slog availability; port 80 bind failure is non-fatal per D-04
 - [Phase 01-core-server-binary]: makeHandler closure-based factory avoids runtime port parsing from r.Host per research guidance
+- [Phase 02-container-and-distribution]: FROM --platform=$BUILDPLATFORM on builder stage avoids QEMU emulation during go build (native-speed cross-compilation)
+- [Phase 02-container-and-distribution]: Exec-form ENTRYPOINT ["/swiss-army-image"] mandatory for FROM scratch — shell-form fails because /bin/sh is absent
+- [Phase 02-container-and-distribution]: Single GHA job (build-push) over separate build/push jobs — avoids artifact passing, simpler for this project scale
 
 ### Pending Todos
 
@@ -72,6 +76,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T21:13:02.122Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-container-and-distribution/02-CONTEXT.md
+Last session: 2026-03-25T21:31:17.851Z
+Stopped at: Completed 02-container-and-distribution/02-01-PLAN.md
+Resume file: None
