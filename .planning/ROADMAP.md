@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Core Server Binary** - Go binary binding all 6 ports with catch-all HTTP 200 JSON responses and structured stdout logging
 - [x] **Phase 2: Container and Distribution** - Multi-stage Dockerfile, multi-arch image, GitHub Actions CI/CD, and usage documentation (completed 2026-03-25)
-- [ ] **Phase 3: Behavioral Enhancements** - Delay injection and status code override via query parameters
+- [x] **Phase 3: Behavioral Enhancements** - Delay injection and status code override via query parameters (completed 2026-03-25)
 
 ## Phase Details
 
@@ -55,9 +55,9 @@ Plans:
   1. A request with `?delay=500` causes the response to arrive after at least 500 milliseconds
   2. A request with `?status=503` returns HTTP 503 instead of 200 (with the same JSON body)
   3. Requests without delay or status query params are unaffected and continue returning HTTP 200 immediately
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 Plans:
-- [ ] 03-01-PLAN.md — Add delay injection and status code override to handler with integration tests
+- [x] 03-01-PLAN.md — Add delay injection and status code override to handler with integration tests
 
 ## Progress
 
@@ -68,4 +68,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Core Server Binary | 0/1 | Planning complete | - |
 | 2. Container and Distribution | 2/2 | Complete   | 2026-03-25 |
-| 3. Behavioral Enhancements | 0/1 | Planning complete | - |
+| 3. Behavioral Enhancements | 1/1 | Complete   | 2026-03-25 |

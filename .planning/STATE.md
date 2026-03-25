@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Phase complete — ready for verification
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-25T22:25:18.237Z"
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-03-25T23:03:54.824Z"
 progress:
   total_phases: 3
-  completed_phases: 2
-  total_plans: 3
-  completed_plans: 3
+  completed_phases: 3
+  total_plans: 4
+  completed_plans: 4
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-25)
 
 **Core value:** Any containerized scaffolding can be validated end-to-end — networking, routing, proxies, load balancers, probes — without needing real application code running.
-**Current focus:** Phase 02 — container-and-distribution
+**Current focus:** Phase 03 — behavioral-enhancements
 
 ## Current Position
 
-Phase: 02 (container-and-distribution) — EXECUTING
-Plan: 2 of 2
+Phase: 03 (behavioral-enhancements) — EXECUTING
+Plan: 1 of 1
 
 ## Performance Metrics
 
@@ -49,6 +49,7 @@ Plan: 2 of 2
 | Phase 01-core-server-binary P01 | 8 | 2 tasks | 4 files |
 | Phase 02-container-and-distribution P01 | 1min | 2 tasks | 2 files |
 | Phase 02-container-and-distribution P02 | 3min | 2 tasks | 2 files |
+| Phase 03-behavioral-enhancements P01 | 8min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,8 @@ Recent decisions affecting current work:
 - [Phase 02-container-and-distribution]: Single GHA job (build-push) over separate build/push jobs — avoids artifact passing, simpler for this project scale
 - [Phase 02-container-and-distribution]: docker-compose.yml omits deprecated 'version:' key — 'services:' at top level is correct for modern Docker Compose v2+
 - [Phase 02-container-and-distribution]: README scope matches D-08 exactly: no build-from-source instructions, no contributing guide — just what a user needs to run the image
+- [Phase 03-behavioral-enhancements]: Use curl -s (not -sf) for non-2xx status tests — -f causes curl exit non-zero concatenating 000 fallback with status code
+- [Phase 03-behavioral-enhancements]: Inline parse-and-validate for delay/status params — ~10 lines each, no abstraction needed; resolvedStatus pattern for parameterized WriteHeader
 
 ### Pending Todos
 
@@ -79,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-25T22:25:18.229Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-behavioral-enhancements/03-CONTEXT.md
+Last session: 2026-03-25T23:03:54.821Z
+Stopped at: Completed 03-01-PLAN.md
+Resume file: None

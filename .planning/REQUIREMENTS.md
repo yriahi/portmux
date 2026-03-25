@@ -36,8 +36,8 @@
 
 ### Enhancements
 
-- [ ] **ENH-01**: Request with `?delay=<ms>` query parameter waits the specified number of milliseconds before responding (latency injection)
-- [ ] **ENH-02**: Request with `?status=<code>` query parameter returns the specified HTTP status code instead of 200 (error simulation)
+- [x] **ENH-01**: Request with `?delay=<ms>` query parameter waits the specified number of milliseconds before responding (latency injection)
+- [x] **ENH-02**: Request with `?status=<code>` query parameter returns the specified HTTP status code instead of 200 (error simulation)
 
 ## v2 Requirements
 
@@ -79,8 +79,8 @@
 | DIST-01 | Phase 2 | Complete |
 | DIST-02 | Phase 2 | Complete |
 | DIST-03 | Phase 2 | Complete |
-| ENH-01 | Phase 3 | Pending |
-| ENH-02 | Phase 3 | Pending |
+| ENH-01 | Phase 3 | Complete |
+| ENH-02 | Phase 3 | Complete |
 
 **Coverage:**
 - v1 requirements: 16 total
