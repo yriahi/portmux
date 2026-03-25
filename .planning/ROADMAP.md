@@ -42,7 +42,10 @@ Plans:
   3. `docker stop` on a running container completes in under 2 seconds (exec-form ENTRYPOINT, clean SIGTERM handling)
   4. Pushing a semver tag triggers GitHub Actions, builds the multi-arch image, and publishes it tagged with both the semver version and `latest`
   5. Repository includes a `docker-compose.yml` showing the image wired into a service stack with all ports mapped
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Create multi-stage Dockerfile and GitHub Actions CI/CD workflow for multi-arch image build and push to Nexus
+- [ ] 02-02-PLAN.md — Create docker-compose.yml usage example and README.md documentation
 
 ### Phase 3: Behavioral Enhancements
 **Goal**: Users can inject artificial latency and force specific HTTP status codes via query parameters to test timeout handling and error propagation through their scaffolding
@@ -62,5 +65,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Core Server Binary | 0/1 | Planning complete | - |
-| 2. Container and Distribution | 0/? | Not started | - |
+| 2. Container and Distribution | 0/2 | Planning complete | - |
 | 3. Behavioral Enhancements | 0/? | Not started | - |
