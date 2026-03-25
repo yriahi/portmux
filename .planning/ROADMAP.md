@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. Response includes `Content-Type: application/json` header on every request
 **Plans:** 1 plan
 Plans:
-- [ ] 01-01-PLAN.md — Implement Go server binary with multi-port binding, JSON responses, structured logging, SIGTERM shutdown, and integration tests
+- [x] 01-01-PLAN.md — Implement Go server binary with multi-port binding, JSON responses, structured logging, SIGTERM shutdown, and integration tests
 
 ### Phase 2: Container and Distribution
 **Goal**: A published multi-arch Docker image runnable with a single `docker run` command, built and pushed automatically by GitHub Actions on semver tags, with a docker-compose example and README usage instructions

@@ -7,20 +7,20 @@
 
 ### Server
 
-- [ ] **SRVR-01**: Container binds ports 80, 8080, 8181, 8081, 3000, and 5000 simultaneously in a single running instance
-- [ ] **SRVR-02**: Any HTTP request on any path and any method returns a response — no 404s, no routing errors, no path restrictions
-- [ ] **SRVR-03**: Container exits cleanly on SIGTERM with graceful shutdown (drains in-flight requests, exits within 5 seconds)
+- [x] **SRVR-01**: Container binds ports 80, 8080, 8181, 8081, 3000, and 5000 simultaneously in a single running instance
+- [x] **SRVR-02**: Any HTTP request on any path and any method returns a response — no 404s, no routing errors, no path restrictions
+- [x] **SRVR-03**: Container exits cleanly on SIGTERM with graceful shutdown (drains in-flight requests, exits within 5 seconds)
 
 ### Response
 
-- [ ] **RESP-01**: All HTTP responses return status code 200 by default
-- [ ] **RESP-02**: Response body is JSON containing: port number, HTTP method, request path, ISO timestamp, and query parameters
-- [ ] **RESP-03**: Response includes `Content-Type: application/json` header on every request
+- [x] **RESP-01**: All HTTP responses return status code 200 by default
+- [x] **RESP-02**: Response body is JSON containing: port number, HTTP method, request path, ISO timestamp, and query parameters
+- [x] **RESP-03**: Response includes `Content-Type: application/json` header on every request
 
 ### Logging
 
-- [ ] **LOG-01**: Each incoming request is logged to stdout with port, method, path, and timestamp
-- [ ] **LOG-02**: Log output is structured JSON (machine-parseable for CloudWatch, Datadog, etc.)
+- [x] **LOG-01**: Each incoming request is logged to stdout with port, method, path, and timestamp
+- [x] **LOG-02**: Log output is structured JSON (machine-parseable for CloudWatch, Datadog, etc.)
 
 ### Container
 
@@ -65,14 +65,14 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SRVR-01 | Phase 1 | Pending |
-| SRVR-02 | Phase 1 | Pending |
-| SRVR-03 | Phase 1 | Pending |
-| RESP-01 | Phase 1 | Pending |
-| RESP-02 | Phase 1 | Pending |
-| RESP-03 | Phase 1 | Pending |
-| LOG-01 | Phase 1 | Pending |
-| LOG-02 | Phase 1 | Pending |
+| SRVR-01 | Phase 1 | Complete |
+| SRVR-02 | Phase 1 | Complete |
+| SRVR-03 | Phase 1 | Complete |
+| RESP-01 | Phase 1 | Complete |
+| RESP-02 | Phase 1 | Complete |
+| RESP-03 | Phase 1 | Complete |
+| LOG-01 | Phase 1 | Complete |
+| LOG-02 | Phase 1 | Complete |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
