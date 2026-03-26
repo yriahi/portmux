@@ -6,16 +6,38 @@
 
 ## Building & Pushing
 
-Build and push a multi-arch image to your registry:
+**Docker Hub**
 
 ```bash
-# If using a private registry (e.g. Nexus), log in first:
-# docker login nexus.corp.com:5001
+docker login
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --push \
+  -t your-dockerhub-username/portmux:latest \
+  .
+```
+
+**Amazon ECR**
+
+```bash
+aws ecr get-login-password --region us-east-1 \
+  | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
 
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --push \
-  -t your-registry/portmux:latest \
+  -t 123456789012.dkr.ecr.us-east-1.amazonaws.com/portmux:latest \
+  .
+```
+
+**Private registry (e.g. Nexus)**
+
+```bash
+docker login nexus.corp.com:5001
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --push \
+  -t nexus.corp.com:5001/portmux:latest \
   .
 ```
 
