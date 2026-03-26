@@ -59,9 +59,10 @@ None.
 | 260326-de4 | Update Nexus registry from :5000/cainc/yriahi to :5001/cainc/ops/yriahi in docker-compose.yml, README.md, build-push.yml | 2026-03-26 | 5c57c7d | [260326-de4-update-docker-compose-yml-image-referenc](./quick/260326-de4-update-docker-compose-yml-image-referenc/) |
 | 260326-drl | Create .gitignore for Go + Docker project | 2026-03-26 | 311bf2e | [260326-drl-create-a-gitignore-appropriate-for-a-go-](./quick/260326-drl-create-a-gitignore-appropriate-for-a-go-/) |
 | 260326-el1 | Rename swiss-knife-image to portmux across all source files | 2026-03-26 | fa50ba2 | [260326-el1-rename-swiss-knife-image-to-portmux-acro](./quick/260326-el1-rename-swiss-knife-image-to-portmux-acro/) |
+| 260326-qak | Change docker-compose.yml to build from local Dockerfile | 2026-03-26 | 7eb7721 | [260326-qak-change-docker-compose-yml-to-build-from-](./quick/260326-qak-change-docker-compose-yml-to-build-from-/) |
 
 ## Session Continuity
 
 Last session: 2026-03-26
-Stopped at: Completed quick task 260326-el1 (rename swiss-knife-image to portmux across all source files)
+Stopped at: Completed quick task 260326-qak (change docker-compose.yml to build from local Dockerfile)
 Resume file: None
