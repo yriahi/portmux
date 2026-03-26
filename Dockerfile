@@ -16,7 +16,7 @@ COPY *.go ./
 ARG TARGETOS
 ARG TARGETARCH
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
-    go build -trimpath -o /swiss-knife-image .
+    go build -trimpath -o /portmux .
 
 # Stage 2: Final image
 # FROM scratch — zero OS overhead, only the binary lands in the final image (~5 MB total).
@@ -25,8 +25,8 @@ FROM scratch
 # Document all 6 ports the binary listens on.
 EXPOSE 80 8080 8181 8081 3000 5000
 
-COPY --from=build /swiss-knife-image /swiss-knife-image
+COPY --from=build /portmux /portmux
 
 # Exec-form ENTRYPOINT: process is PID 1 and receives SIGTERM directly.
 # Shell-form would fail — FROM scratch has no /bin/sh.
-ENTRYPOINT ["/swiss-knife-image"]
+ENTRYPOINT ["/portmux"]

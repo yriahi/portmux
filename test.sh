@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Swiss Knife Image — Integration smoke test
+# portmux — Integration smoke test
 # Tests: HTTP 200 on all non-privileged ports, JSON response shape,
 # Content-Type header, multiple HTTP methods, structured JSON logs,
 # graceful SIGTERM shutdown.
@@ -40,21 +40,21 @@ cleanup() {
     kill "$SERVER_PID" 2>/dev/null || true
     wait "$SERVER_PID" 2>/dev/null || true
   fi
-  rm -f swiss-knife-image
+  rm -f portmux
 }
 trap cleanup EXIT
 
 # ----- build -----------------------------------------------------------------
 
 echo "=== Building binary ==="
-go build -o swiss-knife-image .
+go build -o portmux .
 echo "Build OK"
 
 # ----- start server ----------------------------------------------------------
 
 echo ""
 echo "=== Starting server ==="
-./swiss-knife-image > /tmp/sai-test-stdout.log 2>&1 &
+./portmux > /tmp/sai-test-stdout.log 2>&1 &
 SERVER_PID=$!
 
 # Wait for server to be ready (max 5 attempts)
