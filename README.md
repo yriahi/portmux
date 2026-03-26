@@ -4,45 +4,6 @@
 
 **Portmux** is a lightweight Docker image that acts as a universal HTTP stub for testing containerized service scaffolding. It listens simultaneously on ports 80, 3000, 3306, 4040, 5000, 5432, 5601, 6379, 8000, 8080, 8081, 8181, 8888, 9090, 9200, and 27017, and returns HTTP 200 with JSON request metadata on every path regardless of method or URL. Drop it in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run to validate networking, routing, proxies, load balancers, and health probes — without needing real application code.
 
-## Building & Pushing
-
-**Docker Hub**
-
-```bash
-docker login
-docker buildx build \
-  --platform linux/amd64,linux/arm64 \
-  --push \
-  -t your-dockerhub-username/portmux:latest \
-  .
-```
-
-**Amazon ECR**
-
-```bash
-aws ecr get-login-password --region us-east-1 \
-  | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
-
-docker buildx build \
-  --platform linux/amd64,linux/arm64 \
-  --push \
-  -t 123456789012.dkr.ecr.us-east-1.amazonaws.com/portmux:latest \
-  .
-```
-
-**Private registry (e.g. Nexus)**
-
-```bash
-docker login nexus.corp.com:5001
-docker buildx build \
-  --platform linux/amd64,linux/arm64 \
-  --push \
-  -t nexus.corp.com:5001/portmux:latest \
-  .
-```
-
-> **Note:** Requires `docker buildx` with a multi-platform builder. If you haven't set one up, run `docker buildx create --use` first.
-
 ## Quick Start
 
 ### Kubernetes
@@ -127,6 +88,45 @@ curl -X POST http://localhost:8080/health
 | 27017 | MongoDB |
 
 > **Note:** Port 80 requires root or `CAP_NET_BIND_SERVICE`. If it fails to bind, the other 15 ports still work.
+
+## Building & Pushing
+
+**Docker Hub**
+
+```bash
+docker login
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --push \
+  -t your-dockerhub-username/portmux:latest \
+  .
+```
+
+**Amazon ECR**
+
+```bash
+aws ecr get-login-password --region us-east-1 \
+  | docker login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --push \
+  -t 123456789012.dkr.ecr.us-east-1.amazonaws.com/portmux:latest \
+  .
+```
+
+**Private registry (e.g. Nexus)**
+
+```bash
+docker login nexus.corp.com:5001
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --push \
+  -t nexus.corp.com:5001/portmux:latest \
+  .
+```
+
+> **Note:** Requires `docker buildx` with a multi-platform builder. If you haven't set one up, run `docker buildx create --use` first.
 
 ## Adding a New Port
 
