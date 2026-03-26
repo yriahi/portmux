@@ -55,9 +55,10 @@ None.
 |---|-------------|------|--------|-----------|
 | 260325-qnw | Add Building and Pushing section to README | 2026-03-25 | f925654 | [260325-qnw-add-building-and-pushing-section-to-read](./quick/260325-qnw-add-building-and-pushing-section-to-read/) |
 | 260325-rbw | Add ports 8000, 8888, 3306, 5432, 6379, 9090 | 2026-03-25 | 11c1cbf | [260325-rbw-add-ports-8000-8888-3306-5432-6379-9090-](./quick/260325-rbw-add-ports-8000-8888-3306-5432-6379-9090-/) |
+| 260325-ru5 | rename swiss-army-image to swiss-knife-image across all active project files | 2026-03-26 | 178eb09 | [260325-ru5-rename-swiss-army-image-to-swiss-knife-i](./quick/260325-ru5-rename-swiss-army-image-to-swiss-knife-i/) |
 
 ## Session Continuity
 
-Last session: 2026-03-25
+Last session: 2026-03-26
 Stopped at: v1.0 milestone archived — ready for /gsd:new-milestone
 Resume file: None
