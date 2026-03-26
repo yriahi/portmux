@@ -1,0 +1,39 @@
+# Go build artifacts
+swiss-knife-image
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test output
+*.test
+*.out
+cover.out
+coverage.html
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Vendor directory (optional — uncomment if vendor/ is added)
+# vendor/
+
+# Docker local config
+.docker/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
