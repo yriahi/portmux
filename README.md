@@ -55,12 +55,30 @@ docker compose up
 
 Every request — any path, any HTTP method — returns HTTP 200 with a JSON body:
 
+```bash
+curl http://localhost:3000/api/users
+```
+
+```json
+{
+  "port": 3000,
+  "method": "GET",
+  "path": "/api/users",
+  "timestamp": "2026-03-26T12:00:00Z",
+  "query_params": {}
+}
+```
+
+```bash
+curl -X POST http://localhost:8080/health
+```
+
 ```json
 {
   "port": 8080,
-  "method": "GET",
-  "path": "/",
-  "timestamp": "2026-03-25T12:00:00Z",
+  "method": "POST",
+  "path": "/health",
+  "timestamp": "2026-03-26T12:00:01Z",
   "query_params": {}
 }
 ```
