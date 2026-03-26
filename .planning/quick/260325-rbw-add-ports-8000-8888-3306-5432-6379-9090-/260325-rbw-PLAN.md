@@ -35,7 +35,7 @@ must_haves:
 ---
 
 <objective>
-Add 6 new ports (8000, 8888, 3306, 5432, 6379, 9090) to the swiss-army-image server so it can stub MySQL, PostgreSQL, Redis, Prometheus, Jupyter, and additional web server ports.
+Add 6 new ports (8000, 8888, 3306, 5432, 6379, 9090) to the swiss-knife-image server so it can stub MySQL, PostgreSQL, Redis, Prometheus, Jupyter, and additional web server ports.
 
 Purpose: Expand port coverage to database and monitoring service ports for broader scaffolding validation.
 Output: Updated main.go, test.sh, README.md, docker-compose.yml with all 12 ports.
@@ -75,7 +75,7 @@ for port in 8080 8181 8081 3000 5000 8000 8888 3306 5432 6379 9090; do
 This adds the 6 new ports to the HTTP 200 smoke test loop. Port 80 remains excluded (requires root/CAP_NET_BIND_SERVICE).
   </action>
   <verify>
-    <automated>cd /Users/yriahi/Development/swiss-army-image && bash test.sh</automated>
+    <automated>cd /Users/yriahi/Development/swiss-knife-image && bash test.sh</automated>
   </verify>
   <done>Server binds all 12 ports, test.sh passes with HTTP 200 assertions on all 11 non-privileged ports</done>
 </task>
@@ -121,7 +121,7 @@ In docker-compose.yml, add 6 new port mappings after the existing ones:
 ```
   </action>
   <verify>
-    <automated>cd /Users/yriahi/Development/swiss-army-image && grep -c "9090" README.md && grep -c "9090" docker-compose.yml && grep "3306" README.md | head -3</automated>
+    <automated>cd /Users/yriahi/Development/swiss-knife-image && grep -c "9090" README.md && grep -c "9090" docker-compose.yml && grep "3306" README.md | head -3</automated>
   </verify>
   <done>README.md documents all 12 ports in the table, docker run, and docker compose examples. docker-compose.yml maps all 12 ports. Port 80 note references 11 remaining ports.</done>
 </task>

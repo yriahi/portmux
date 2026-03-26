@@ -38,7 +38,7 @@
 # Example build command (local):
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
-  --tag swiss-army-image:latest \
+  --tag swiss-knife-image:latest \
   --push \
   .
 ```
@@ -96,5 +96,5 @@ docker buildx build \
 - Training data (Go multi-port goroutine pattern, CGO_ENABLED=0 scratch compatibility) — MEDIUM confidence, standard Go Docker patterns widely validated
 
 ---
-*Stack research for: Swiss Army Image — minimal multi-port HTTP stub Docker image*
+*Stack research for: Swiss Knife Image — minimal multi-port HTTP stub Docker image*
 *Researched: 2026-03-25*

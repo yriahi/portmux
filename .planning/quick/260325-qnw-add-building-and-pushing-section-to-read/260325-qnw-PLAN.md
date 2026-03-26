@@ -23,7 +23,7 @@ Add a "Building & Pushing" section to README.md placed before "Quick Start". The
    docker buildx build \
      --platform linux/amd64,linux/arm64 \
      --push \
-     -t nexus.cainc.com:5000/cainc/yriahi/swiss-army-image:latest \
+     -t nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest \
      .
    ```
    Note: requires `docker buildx` with a multi-platform builder (e.g., `docker buildx create --use`).

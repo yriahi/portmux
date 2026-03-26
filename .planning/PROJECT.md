@@ -1,4 +1,4 @@
-# Swiss Army Image
+# Swiss Knife Image
 
 ## What This Is
 

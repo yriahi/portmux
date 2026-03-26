@@ -143,7 +143,7 @@ Features to defer until product-market fit is established.
 
 ## Competitor Feature Analysis
 
-| Feature | traefik/whoami | mendhak/http-https-echo | nicholasjackson/fake-service | hashicorp/http-echo | Swiss Army Image |
+| Feature | traefik/whoami | mendhak/http-https-echo | nicholasjackson/fake-service | hashicorp/http-echo | Swiss Knife Image |
 |---------|---------------|------------------------|------------------------------|---------------------|-----------------|
 | Catch-all routing | Yes | Yes | Yes | Yes (single text response) | Yes |
 | Multi-port binding | No (single port) | No (HTTP + HTTPS only) | No (single port) | No (single port) | Yes — core feature |

@@ -29,7 +29,7 @@ metrics:
 
 # Quick Task 260325-rbw: Add Ports 8000 8888 3306 5432 6379 9090 Summary
 
-**One-liner:** Expanded swiss-army-image from 6 to 12 ports adding MySQL (3306), PostgreSQL (5432), Redis (6379), Prometheus (9090), Django/uvicorn (8000), and Jupyter (8888) coverage.
+**One-liner:** Expanded swiss-knife-image from 6 to 12 ports adding MySQL (3306), PostgreSQL (5432), Redis (6379), Prometheus (9090), Django/uvicorn (8000), and Jupyter (8888) coverage.
 
 ## Tasks Completed
 

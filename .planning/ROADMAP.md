@@ -1,4 +1,4 @@
-# Roadmap: Swiss Army Image
+# Roadmap: Swiss Knife Image
 
 ## Milestones
 

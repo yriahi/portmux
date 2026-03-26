@@ -50,13 +50,13 @@ Use `docker buildx build --platform linux/amd64,linux/arm64 --push -t image:tag 
 ### Pitfall 3: EXPOSE Does Not Bind Ports — Runtime `-p` Flag Still Required
 
 **What goes wrong:**
-Adding `EXPOSE 80 8080 3000 5000 8181 8081` to the Dockerfile does not make those ports accessible from outside the container. `EXPOSE` is documentation only. If a consumer runs `docker run swiss-army-image` without `-p` flags, all ports are unreachable from the host. The container is healthy internally, but nothing can connect to it. This is especially confusing during testing when the container reports "listening on :8080" but `curl localhost:8080` times out.
+Adding `EXPOSE 80 8080 3000 5000 8181 8081` to the Dockerfile does not make those ports accessible from outside the container. `EXPOSE` is documentation only. If a consumer runs `docker run swiss-knife-image` without `-p` flags, all ports are unreachable from the host. The container is healthy internally, but nothing can connect to it. This is especially confusing during testing when the container reports "listening on :8080" but `curl localhost:8080` times out.
 
 **Why it happens:**
 `EXPOSE` looks like a port-publishing directive. New Docker users assume it functions like a firewall rule or port binding. The actual binding only happens at `docker run -p 8080:8080` or via docker-compose `ports:` entries.
 
 **How to avoid:**
-Document the required `docker run` invocation explicitly in the README and as a Dockerfile `LABEL`. Use `docker run -p 80:80 -p 8080:8080 -p 8181:8181 -p 8081:8081 -p 3000:3000 -p 5000:5000 swiss-army-image` in all examples. In docker-compose, `ports:` must enumerate every port. Do not rely on `-P` (publish all exposed ports) as it maps to random high-numbered host ports, breaking consumers that hardcode port numbers.
+Document the required `docker run` invocation explicitly in the README and as a Dockerfile `LABEL`. Use `docker run -p 80:80 -p 8080:8080 -p 8181:8181 -p 8081:8081 -p 3000:3000 -p 5000:5000 swiss-knife-image` in all examples. In docker-compose, `ports:` must enumerate every port. Do not rely on `-P` (publish all exposed ports) as it maps to random high-numbered host ports, breaking consumers that hardcode port numbers.
 
 **Warning signs:**
 - `curl localhost:8080` returns `Connection refused` when container is running
@@ -121,7 +121,7 @@ Developers copy a base image from the application they are stubbing. If stubbing
 Use multi-stage builds: compile in a full SDK image, copy the binary to `scratch` (for fully static Go binaries) or `alpine:3` (if libc is needed). A Go static binary in `scratch` produces images under 10MB. If using a scripting language without compilation (Python, Node), use `-alpine` or `-slim` variants. Target image size: under 20MB.
 
 **Warning signs:**
-- `docker images swiss-army-image` shows size over 100MB
+- `docker images swiss-knife-image` shows size over 100MB
 - `FROM` line is a full SDK image (`golang:`, `node:`, `openjdk:`)
 - No multi-stage build in Dockerfile
 - ECS task launch takes over 30 seconds on cold start
@@ -192,7 +192,7 @@ For local development use `127.0.0.1:8080:8080` (or `127.0.0.1` for each port) i
 | Kubernetes readiness probe | `initialDelaySeconds` too short; probe fires before server binds all 6 ports | Use `startupProbe` or set `initialDelaySeconds: 3` to give all ports time to bind |
 | ECS health check | `command` array uses `curl` but `curl` is not installed in minimal image (`scratch`/`alpine`) | Either install `wget`/`curl` in image, or use TCP health check: `["CMD", "nc", "-z", "localhost", "8080"]` |
 | ECS health check | `interval` default (30s) + `startPeriod` not set causes initial unhealthy state during cold start | Set `startPeriod: 10` to give the task time to start before health checks count against it |
-| docker-compose service dependency | Another service uses `depends_on: swiss-army-image` expecting it to be "ready" | Add `healthcheck` to the stub service in compose so `depends_on: condition: service_healthy` works |
+| docker-compose service dependency | Another service uses `depends_on: swiss-knife-image` expecting it to be "ready" | Add `healthcheck` to the stub service in compose so `depends_on: condition: service_healthy` works |
 | NGINX upstream proxy | NGINX `proxy_pass` to stub container fails if stub returns no `Content-Length` | Ensure server sets `Content-Length` or uses chunked transfer encoding; Go/Node HTTP servers do this automatically |
 | CI/CD image push | `docker build && docker push` produces single-arch manifest | Use `docker buildx build --platform linux/amd64,linux/arm64 --push` in one command |
 
@@ -228,7 +228,7 @@ For local development use `127.0.0.1:8080:8080` (or `127.0.0.1` for each port) i
 - [ ] **Signal handling:** `docker stop` completes in under 2 seconds (not 10s timeout)
 - [ ] **Content-Type:** `curl -I localhost:8080/` shows `Content-Type: application/json`
 - [ ] **JSON body:** Response body parses as valid JSON with keys: `port`, `method`, `path`, `timestamp`, `query`
-- [ ] **Image size:** `docker images swiss-army-image` shows under 20MB
+- [ ] **Image size:** `docker images swiss-knife-image` shows under 20MB
 - [ ] **Stdout logging:** `docker logs container` shows one log line per request
 - [ ] **No zombies:** `docker exec container ps aux` shows no `<defunct>` processes after 60 seconds of operation
 - [ ] **ECS health check:** Task reaches HEALTHY state, not UNHEALTHY, within 30 seconds of launch
@@ -278,5 +278,5 @@ For local development use `127.0.0.1:8080:8080` (or `127.0.0.1` for each port) i
 - Domain expertise: ECS health check startPeriod, Kubernetes probe initialDelaySeconds, Content-Type header requirements for proxy compatibility
 
 ---
-*Pitfalls research for: Docker stub/mock HTTP server image (swiss-army-image)*
+*Pitfalls research for: Docker stub/mock HTTP server image (swiss-knife-image)*
 *Researched: 2026-03-25*

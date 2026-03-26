@@ -1,4 +1,4 @@
-# Retrospective: Swiss Army Image
+# Retrospective: Swiss Knife Image
 
 Living retrospective — one section per milestone.
 

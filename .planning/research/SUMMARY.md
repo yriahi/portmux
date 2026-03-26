@@ -1,13 +1,13 @@
 # Project Research Summary
 
-**Project:** Swiss Army Image
+**Project:** Swiss Knife Image
 **Domain:** Minimal multi-port catch-all HTTP stub Docker image
 **Researched:** 2026-03-25
 **Confidence:** HIGH
 
 ## Executive Summary
 
-Swiss Army Image is a drop-in Docker stub that replaces real application containers during infrastructure scaffolding and topology validation. The core contract is simple: bind six well-known framework ports simultaneously (80, 8080, 8181, 8081, 3000, 5000), respond HTTP 200 with structured JSON metadata to any request on any path via any method, and publish a multi-arch manifest covering linux/amd64 and linux/arm64. No existing tool does this — traefik/whoami, mendhak/http-https-echo, hashicorp/http-echo, and nicholasjackson/fake-service all bind a single port. Multi-port is both the unique selling point and the entire design constraint.
+Swiss Knife Image is a drop-in Docker stub that replaces real application containers during infrastructure scaffolding and topology validation. The core contract is simple: bind six well-known framework ports simultaneously (80, 8080, 8181, 8081, 3000, 5000), respond HTTP 200 with structured JSON metadata to any request on any path via any method, and publish a multi-arch manifest covering linux/amd64 and linux/arm64. No existing tool does this — traefik/whoami, mendhak/http-https-echo, hashicorp/http-echo, and nicholasjackson/fake-service all bind a single port. Multi-port is both the unique selling point and the entire design constraint.
 
 The recommended implementation is a single statically-linked Go binary running in a `FROM scratch` container built via a multi-stage Dockerfile. Go's `net/http` stdlib handles six concurrent goroutines trivially with `golang.org/x/sync/errgroup`, produces a ~5 MB binary with `CGO_ENABLED=0`, and requires zero external dependencies. The multi-stage build uses `golang:1.26-alpine` as the builder and `FROM scratch` as the runtime stage, producing a final image well under 10 MB. `docker buildx build --platform linux/amd64,linux/arm64` covers both Apple Silicon dev and amd64 CI with no QEMU overhead.
 

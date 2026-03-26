@@ -47,7 +47,7 @@
 ## Recommended Project Structure
 
 ```
-swiss-army-image/
+swiss-knife-image/
 ├── main.go                   # Entry point: port list, goroutine fan-out, errgroup
 ├── handler.go                # Shared catch-all HTTP handler + JSON builder
 ├── go.mod                    # Module: single dependency (errgroup or none)
@@ -153,11 +153,11 @@ ENTRYPOINT ["/sbin/tini", "--", "/server"]
 
 **Recommended tag set per release:**
 ```
-ghcr.io/org/swiss-army-image:1.2.3         # exact version
-ghcr.io/org/swiss-army-image:1.2           # minor stream
-ghcr.io/org/swiss-army-image:1             # major stream
-ghcr.io/org/swiss-army-image:latest        # mutable, main branch only
-ghcr.io/org/swiss-army-image:sha-abc1234   # immutable, exact build
+ghcr.io/org/swiss-knife-image:1.2.3         # exact version
+ghcr.io/org/swiss-knife-image:1.2           # minor stream
+ghcr.io/org/swiss-knife-image:1             # major stream
+ghcr.io/org/swiss-knife-image:latest        # mutable, main branch only
+ghcr.io/org/swiss-knife-image:sha-abc1234   # immutable, exact build
 ```
 
 ## Data Flow
