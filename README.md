@@ -45,12 +45,6 @@ docker buildx build \
 
 ## Quick Start
 
-### docker compose
-
-```bash
-docker compose up
-```
-
 ### Kubernetes
 
 ```yaml
@@ -63,7 +57,13 @@ image: ghcr.io/yriahi/portmux:latest
 "image": "ghcr.io/yriahi/portmux:latest"
 ```
 
-## Sample Response
+### docker compose
+
+```bash
+docker compose up
+```
+
+#### Sample Response
 
 Every request — any path, any HTTP method — returns HTTP 200 with a JSON body:
 
