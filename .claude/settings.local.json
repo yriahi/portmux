@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(WS=/Users/yriahi/Development/swiss-knife-image/.claude/skills/add-port-workspace/iteration-1/eval-0-single-port)",
+      "Bash(__NEW_LINE_b4b22c40d957ff61__ echo:*)",
+      "Read(//Users/yriahi/Development/swiss-knife-image/.claude/worktrees/agent-a9f50930/$WS/with_skill/outputs/**)",
+      "Read(//Users/yriahi/Development/swiss-knife-image/.claude/worktrees/agent-a9f50930/$WS/without_skill/outputs/**)",
+      "Bash(WS=/Users/yriahi/Development/swiss-knife-image/.claude/skills/add-port-workspace/iteration-1/eval-2-custom-desc)",
+      "Bash(__NEW_LINE_45b9eba48e8af5ae__ echo:*)",
+      "Read(//Users/yriahi/.claude/plugins/marketplaces/claude-plugins-official/plugins/skill-creator/**)",
+      "Bash(python -m scripts.aggregate_benchmark /Users/yriahi/Development/swiss-knife-image/.claude/skills/add-port-workspace/iteration-1 --skill-name add-port)"
+    ]
+  }
+}
