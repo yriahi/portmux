@@ -23,29 +23,6 @@ docker buildx build \
 
 ## Quick Start
 
-### docker run
-
-```bash
-docker run \
-  -p 80:80 \
-  -p 8080:8080 \
-  -p 8181:8181 \
-  -p 8081:8081 \
-  -p 3000:3000 \
-  -p 5000:5000 \
-  -p 3306:3306 \
-  -p 5601:5601 \
-  -p 4040:4040 \
-  -p 5432:5432 \
-  -p 6379:6379 \
-  -p 8000:8000 \
-  -p 8888:8888 \
-  -p 9090:9090 \
-  -p 9200:9200 \
-  -p 27017:27017 \
-  your-registry/portmux:latest
-```
-
 ### docker compose
 
 ```bash
