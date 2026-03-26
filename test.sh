@@ -80,7 +80,7 @@ echo "=== Running tests ==="
 
 # ----- test a: HTTP 200 on all non-privileged ports --------------------------
 
-for port in 8080 8181 8081 3000 5000 8000 8888 3306 5432 6379 9090; do
+for port in 8080 8181 8081 3000 5000 8000 8888 3306 5432 6379 9090 4040 9200 5601 27017; do
   HTTP_CODE=$(curl -sf -o /tmp/sai-resp.json -w "%{http_code}" "http://localhost:${port}/test/path" 2>/dev/null || echo "000")
   assert_eq "HTTP 200 on port $port" "200" "$HTTP_CODE"
 done

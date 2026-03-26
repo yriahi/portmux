@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-var ports = []int{80, 8080, 8181, 8081, 3000, 5000, 8000, 8888, 3306, 5432, 6379, 9090}
+var ports = []int{80, 8080, 8181, 8081, 3000, 5000, 8000, 8888, 3306, 5432, 6379, 9090, 4040, 9200, 5601, 27017}
 
 func main() {
 	// Initialize structured JSON logger on stdout.
