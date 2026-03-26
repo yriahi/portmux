@@ -116,6 +116,22 @@ curl -X POST http://localhost:8080/health
 
 > **Note:** Port 80 requires root or `CAP_NET_BIND_SERVICE`. If it fails to bind, the other 15 ports still work.
 
+## Adding a New Port
+
+This repo ships a Claude Code skill that keeps all files in sync when you add a port. Tell Claude:
+
+```
+add port 9092
+```
+
+or multiple at once:
+
+```
+add port 9092, 15672
+```
+
+Claude will update `main.go`, `test.sh`, `docker-compose.yml`, and `README.md` atomically, then run the test suite to confirm everything works.
+
 ## Image Details
 
 | Property | Value |
