@@ -1,7 +1,7 @@
 ---
 name: add-port
 description: >
-  Add one or more ports to the swiss-knife-image multiport HTTP stub server.
+  Add one or more ports to the portmux multiport HTTP stub server.
   Use this skill whenever the user says "add port", "add ports", mentions a
   port number they want added, or says something like "also listen on 9200" or
   "support port 4000". Triggers on single ports and comma/space-separated lists.
@@ -10,7 +10,7 @@ description: >
 
 # add-port skill
 
-Add one or more ports to the swiss-knife-image multiport HTTP stub server.
+Add one or more ports to the portmux multiport HTTP stub server.
 
 ## What this skill does
 
@@ -127,7 +127,7 @@ Increment N by the number of ports successfully added.
 
 Commit all 4 files atomically:
 ```
-feat: add port(s) PORT1[, PORT2, ...] to swiss-knife-image
+feat: add port(s) PORT1[, PORT2, ...] to portmux
 ```
 
 ### Step 8: Run tests

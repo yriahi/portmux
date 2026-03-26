@@ -1,6 +1,6 @@
-# Swiss Knife Image
+# portmux
 
-![Swiss Knife Image](swiss-knife-image.png)
+![portmux](portmux.png)
 
 A lightweight Docker image that acts as a universal HTTP stub for testing containerized service scaffolding. It listens simultaneously on ports 80, 3000, 3306, 4040, 5000, 5432, 5601, 6379, 8000, 8080, 8081, 8181, 8888, 9090, 9200, and 27017, and returns HTTP 200 with JSON request metadata on every path regardless of method or URL. Drop it in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run to validate networking, routing, proxies, load balancers, and health probes — without needing real application code.
 
@@ -28,7 +28,7 @@ docker login nexus.cainc.com:5001
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --push \
-  -t nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest \
+  -t nexus.cainc.com:5001/cainc/ops/yriahi/portmux:latest \
   .
 ```
 
@@ -56,7 +56,7 @@ docker run \
   -p 9090:9090 \
   -p 9200:9200 \
   -p 27017:27017 \
-  nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest
+  nexus.cainc.com:5001/cainc/ops/yriahi/portmux:latest
 ```
 
 ### docker compose
@@ -66,7 +66,7 @@ Save the following as `docker-compose.yml` (or use the one included in this repo
 ```yaml
 services:
   stub:
-    image: nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest
+    image: nexus.cainc.com:5001/cainc/ops/yriahi/portmux:latest
     ports:
       - "80:80"
       - "8080:8080"
@@ -145,5 +145,5 @@ Every request — any path, any HTTP method — returns HTTP 200 with a JSON bod
 |----------|-------|
 | Base image | `FROM scratch` (~5 MB, zero OS overhead) |
 | Architectures | `linux/amd64`, `linux/arm64` |
-| Registry | `nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image` |
+| Registry | `nexus.cainc.com:5001/cainc/ops/yriahi/portmux` |
 | Tags | `:latest`, `:main`, semver (e.g., `:v1.0.0`) |

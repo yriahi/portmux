@@ -21,7 +21,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image
+          images: nexus.cainc.com:5001/cainc/ops/yriahi/portmux
           tags: |
             type=semver,pattern={{version}}
             type=raw,value=latest,enable={{is_default_branch}}

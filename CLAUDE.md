@@ -1,7 +1,7 @@
 <!-- GSD:project-start source:PROJECT.md -->
 ## Project
 
-**Swiss Knife Image**
+**portmux**
 
 A lightweight Docker image that acts as a universal stub for testing containerized service scaffolding. It listens simultaneously on all common framework ports (80, 8080, 8181, 8081, 3000, 5000) and returns HTTP 200 with JSON request info on every path, regardless of method or URL. Designed to drop in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run.
 
