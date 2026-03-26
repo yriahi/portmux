@@ -1,6 +1,6 @@
 services:
   stub:
-    image: nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest
+    image: nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest
     ports:
       - "80:80"
       - "8080:8080"

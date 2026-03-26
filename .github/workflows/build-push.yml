@@ -21,7 +21,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image
+          images: nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image
           tags: |
             type=semver,pattern={{version}}
             type=raw,value=latest,enable={{is_default_branch}}
@@ -37,7 +37,7 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v4
         with:
-          registry: nexus.cainc.com:5000
+          registry: nexus.cainc.com:5001
           username: ${{ secrets.NEXUS_USERNAME }}
           password: ${{ secrets.NEXUS_PASSWORD }}
 

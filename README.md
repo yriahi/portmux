@@ -24,11 +24,11 @@ Pushing to `main` or tagging `v*.*.*` triggers the GitHub Actions workflow (`.gi
 For first-time setup before CI runs, or for local testing:
 
 ```bash
-docker login nexus.cainc.com:5000
+docker login nexus.cainc.com:5001
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --push \
-  -t nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest \
+  -t nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest \
   .
 ```
 
@@ -56,7 +56,7 @@ docker run \
   -p 9090:9090 \
   -p 9200:9200 \
   -p 27017:27017 \
-  nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest
+  nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest
 ```
 
 ### docker compose
@@ -66,7 +66,7 @@ Save the following as `docker-compose.yml` (or use the one included in this repo
 ```yaml
 services:
   stub:
-    image: nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest
+    image: nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image:latest
     ports:
       - "80:80"
       - "8080:8080"
@@ -145,5 +145,5 @@ Every request — any path, any HTTP method — returns HTTP 200 with a JSON bod
 |----------|-------|
 | Base image | `FROM scratch` (~5 MB, zero OS overhead) |
 | Architectures | `linux/amd64`, `linux/arm64` |
-| Registry | `nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image` |
+| Registry | `nexus.cainc.com:5001/cainc/ops/yriahi/swiss-knife-image` |
 | Tags | `:latest`, `:main`, semver (e.g., `:v1.0.0`) |
