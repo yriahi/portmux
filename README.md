@@ -51,6 +51,18 @@ docker buildx build \
 docker compose up
 ```
 
+### Kubernetes
+
+```yaml
+image: ghcr.io/yriahi/portmux:latest
+```
+
+### AWS ECS task definition
+
+```json
+"image": "ghcr.io/yriahi/portmux:latest"
+```
+
 ## Sample Response
 
 Every request — any path, any HTTP method — returns HTTP 200 with a JSON body:

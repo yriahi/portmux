@@ -22,6 +22,9 @@ go.work.sum
 # Docker local config
 .docker/
 
+# Claude Code
+.claude/worktrees/
+
 # IDE and editor files
 .idea/
 .vscode/
