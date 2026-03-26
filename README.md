@@ -1,4 +1,4 @@
-# Swiss Army Image
+# Swiss Knife Image
 
 ![Swiss Army Image](swiss-knife-image.png)
 
@@ -28,7 +28,7 @@ docker login nexus.cainc.com:5000
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --push \
-  -t nexus.cainc.com:5000/cainc/yriahi/swiss-army-image:latest \
+  -t nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest \
   .
 ```
 
@@ -52,7 +52,7 @@ docker run \
   -p 8000:8000 \
   -p 8888:8888 \
   -p 9090:9090 \
-  nexus.cainc.com:5000/cainc/yriahi/swiss-army-image:latest
+  nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest
 ```
 
 ### docker compose
@@ -62,7 +62,7 @@ Save the following as `docker-compose.yml` (or use the one included in this repo
 ```yaml
 services:
   stub:
-    image: nexus.cainc.com:5000/cainc/yriahi/swiss-army-image:latest
+    image: nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image:latest
     ports:
       - "80:80"
       - "8080:8080"
@@ -133,5 +133,5 @@ Every request — any path, any HTTP method — returns HTTP 200 with a JSON bod
 |----------|-------|
 | Base image | `FROM scratch` (~5 MB, zero OS overhead) |
 | Architectures | `linux/amd64`, `linux/arm64` |
-| Registry | `nexus.cainc.com:5000/cainc/yriahi/swiss-army-image` |
+| Registry | `nexus.cainc.com:5000/cainc/yriahi/swiss-knife-image` |
 | Tags | `:latest`, `:main`, semver (e.g., `:v1.0.0`) |
