@@ -1,6 +1,6 @@
 # Swiss Knife Image
 
-![Swiss Army Image](swiss-knife-image.png)
+![Swiss Knife Image](swiss-knife-image.png)
 
 A lightweight Docker image that acts as a universal HTTP stub for testing containerized service scaffolding. It listens simultaneously on ports 80, 3000, 3306, 5000, 5432, 6379, 8000, 8080, 8081, 8181, 8888, and 9090, and returns HTTP 200 with JSON request metadata on every path regardless of method or URL. Drop it in wherever a real Node.js, React, Next.js, Java, or Spring Boot container would run to validate networking, routing, proxies, load balancers, and health probes — without needing real application code.
 
