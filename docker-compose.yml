@@ -1,5 +1,6 @@
 services:
   stub:
+    build: .
     image: nexus.cainc.com:5001/cainc/ops/yriahi/portmux:latest
     ports:
       - "80:80"
